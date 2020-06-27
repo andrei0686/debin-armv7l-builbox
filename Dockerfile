@@ -2,7 +2,7 @@ FROM andrei0686/qemu_armv7:latest
 MAINTAINER andrei
 
 RUN apt-get update && \
-	apt-get install -y openssh-server gdb gdbserver sudo build-essential git zip rsync cmake && \
+	apt-get install -y openssh-server gdb gdbserver git zip rsync cmake && \
 	mkdir /var/run/sshd && \
 	echo 'root:root' | chpasswd && \
 	sed -i -E 's/#\s*PermitRootLogin.*/PermitRootLogin yes/' /etc/ssh/sshd_config && \
