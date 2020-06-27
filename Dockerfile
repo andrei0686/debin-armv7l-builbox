@@ -13,7 +13,7 @@ RUN git clone https://github.com/catchorg/Catch2.git
 RUN cd Catch2
 RUN cmake -Bbuild -H. -DBUILD_TESTING=OFF
 RUN cmake --build build/ --target install
-RUN rm -R /home/Catch2
+RUN rm -Rfv /home/Catch2
 RUN apt-get clean
 
 VOLUME /usr/src
