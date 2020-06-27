@@ -1,6 +1,7 @@
 FROM andrei0686/qemu_armv7:latest
 MAINTAINER andrei
 
+RUN uname -m
 RUN apt-get update
 RUN apt-get install -y openssh-server gdb gdbserver git zip rsync cmake
 RUN mkdir /var/run/sshd
