@@ -3,7 +3,7 @@ MAINTAINER andrei
 
 RUN uname -m
 RUN apt-get update
-RUN apt-get install -y openssh-server gdb gdbserver git zip rsync cmake
+RUN apt-get install -y openssh-server gdb gdbserver build-essential git zip rsync cmake
 RUN mkdir /var/run/sshd
 RUN echo 'root:root' | chpasswd
 RUN sed -i -E 's/#\s*PermitRootLogin.*/PermitRootLogin yes/' /etc/ssh/sshd_config
