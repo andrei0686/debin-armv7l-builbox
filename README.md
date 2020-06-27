@@ -14,11 +14,6 @@
 ## Как это использовать
 в качестве примера была взята информация с https://www.stereolabs.com/docs/docker/building-arm-container-on-x86/
 
-для работы возможно понадобится установить пакеты эмуляции процессоров qemu на сервере где запущен docker
-```sh
-  sudo apt-get install qemu binfmt-support qemu-user-static 
-  docker run --rm --privileged multiarch/qemu-user-static --reset
-```
  ### Как получить образ сборки
 
  Образ предоставляет SSH-сервер через порт 22.
@@ -26,14 +21,22 @@
 * Login `root`
 * password `root`
 
-Получить контейнер из репозитория dockerhub
+
+#### собрать образ из dockerfile
+для работы понадобится установить пакеты эмуляции процессоров qemu на сервере где запущен docker
 ```sh
-docker pull andrei0686/debin-armv7l-builbox:latest
+  sudo apt-get install qemu binfmt-support qemu-user-static 
+  docker run --rm --privileged multiarch/qemu-user-static --reset
+```
+затем получить репозиторий и построить образ 
+```sh
+git clone https://github.com/andrei0686/debin-armv7l-builbox
+cd qemu_armv7/
+docker build --rm -t debin-armv7l-builbox . 
  ```
- 
  Для запуска контейнера сборки необходимо выполнить
  ```sh
- docker run -d -p 12345:22 --security-opt seccomp:unconfined andrei0686/debin-armv7l-builbox
+ docker run -d -p 12345:22 --security-opt seccomp:unconfined debin-armv7l-builbox
  ```
  
  ### Как подключиться Visual Studio
