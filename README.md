@@ -12,7 +12,13 @@
 
 
 ## Как это использовать
- 
+в качестве примера была взята информация с https://www.stereolabs.com/docs/docker/building-arm-container-on-x86/
+
+для работы возможно понадобится установить пакеты эмуляции процессоров qemu на сервере где запущен docker
+```sh
+  sudo apt-get install qemu binfmt-support qemu-user-static 
+  docker run --rm --privileged multiarch/qemu-user-static --reset
+```
  ### Как получить образ сборки
 
  Образ предоставляет SSH-сервер через порт 22.
