@@ -31,7 +31,7 @@
 затем получить репозиторий и построить образ 
 ```sh
 git clone https://github.com/andrei0686/debin-armv7l-builbox
-cd qemu_armv7/
+cd debin-armv7l-builbox/
 docker build --rm -t debin-armv7l-builbox . 
  ```
  Для запуска контейнера сборки необходимо выполнить
