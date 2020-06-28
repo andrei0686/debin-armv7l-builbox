@@ -11,7 +11,7 @@ RUN uname -m && \
 RUN cd /home/ && \
   git clone --branch v3.16.8 --single-branch https://github.com/Kitware/CMake.git && \
   cd CMake && \
-  ./bootstrap --parallel=8 && make && make install && \
+  ./bootstrap --parallel=8 --system-libs --no-qt-gui && make && make install && \
   rm -Rfv /home/CMake
 RUN cd /home/ && \
   git clone https://github.com/catchorg/Catch2.git && \
