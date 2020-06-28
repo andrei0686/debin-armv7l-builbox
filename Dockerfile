@@ -3,11 +3,16 @@ MAINTAINER andrei
 
 RUN uname -m && \
  apt-get update && \
- apt-get install -y openssh-server gdb gdbserver build-essential git zip rsync cmake && \
+ apt-get install -y openssh-server gdb gdbserver build-essential git zip rsync && \
  mkdir /var/run/sshd && \
  echo 'root:root' | chpasswd && \
  sed -i -E 's/#\s*PermitRootLogin.*/PermitRootLogin yes/' /etc/ssh/sshd_config && \
  sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
+RUN cd /home/ && \
+  git clone --branch v3.16.8 --single-branch https://github.com/Kitware/CMake.git && \
+  cd CMake && \
+  ./bootstrap --parallel=8 && make && make install && \
+  rm -Rfv /home/CMake
 RUN cd /home/ && \
   git clone https://github.com/catchorg/Catch2.git && \
   cd Catch2 && \
