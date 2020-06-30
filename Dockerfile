@@ -25,8 +25,8 @@ RUN cd /home/ && \
   apt-get clean
 RUN rm -Rfv /home/Catch2
 
-VOLUME /usr/src
-WORKDIR /usr/src
+VOLUME /root
+WORKDIR /root
 
 EXPOSE 22
 CMD ["/usr/sbin/sshd", "-D"]
